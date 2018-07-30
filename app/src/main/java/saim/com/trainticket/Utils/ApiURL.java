@@ -10,6 +10,7 @@ public class ApiURL {
 
     public static String getLogin = header + "login.php";                       //user_email, user_pass
     public static String getRegistration = header + "registration.php";         //user_name, user_email, user_mobile, user_pass
-
+    public static String getFromLocation = header + "from_list.php";            //user_id
+    public static String getToLocation = header + "to_list.php";                //user_id, from
 
 }

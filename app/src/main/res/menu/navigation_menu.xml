@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/btbMenuHome"
+        android:title="Home"
+        android:icon="@android:drawable/btn_star"/>
+
+    <item
+        android:id="@+id/btbMenuProfile"
+        android:title="Profile"
+        android:icon="@android:drawable/btn_star"/>
+
+    <item
+        android:id="@+id/btbMenuSavedContent"
+        android:title="Fare Query"
+        android:icon="@android:drawable/btn_star"/>
+
+    <item
+        android:id="@+id/btbMenuPTicket"
+        android:title="Purchase Ticket"
+        android:icon="@android:drawable/btn_star"/>
+
+    <item
+        android:id="@+id/btbMenuVideo"
+        android:title="History"
+        android:icon="@android:drawable/btn_star"/>
+
+
+    <item
+        android:id="@+id/btbMenuExit"
+        android:title="Exit"
+        android:icon="@android:drawable/btn_star"/>
+
+
+</menu>
