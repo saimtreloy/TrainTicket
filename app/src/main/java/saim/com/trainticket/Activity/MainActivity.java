@@ -15,6 +15,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     android.support.v7.app.ActionBarDrawerToggle actionBarDrawerToggle;
 
-    Button btnFareQuery, btnPurchesTicket, btnProfile, btnHistory;
+    CardView btnFareQuery, btnPurchesTicket, btnProfile, btnHistory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,10 +85,10 @@ public class MainActivity extends AppCompatActivity {
 
         txtProfileName.setText(new SharedPrefDatabase(getApplicationContext()).RetriveNAME());
 
-        btnFareQuery = (Button) findViewById(R.id.btnFareQuery);
-        btnPurchesTicket = (Button) findViewById(R.id.btnPurchesTicket);
-        btnProfile = (Button) findViewById(R.id.btnProfile);
-        btnHistory = (Button) findViewById(R.id.btnHistory);
+        btnFareQuery = (CardView) findViewById(R.id.btnFareQuery);
+        btnPurchesTicket = (CardView) findViewById(R.id.btnPurchesTicket);
+        btnProfile = (CardView) findViewById(R.id.btnProfile);
+        btnHistory = (CardView) findViewById(R.id.btnHistory);
 
         btnFareQuery.setOnClickListener(new View.OnClickListener() {
             @Override

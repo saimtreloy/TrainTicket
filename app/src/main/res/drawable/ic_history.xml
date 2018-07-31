@@ -1,0 +1,18 @@
+<vector android:height="24dp" android:viewportHeight="460.0"
+    android:viewportWidth="460.0" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="#C2001B" android:pathData="M230,0C103,0 0,103 0,230c0,103.5 68.4,191.1 162.4,219.9l294.8,-255.5C440.1,84.3 344.9,0 230,0z"/>
+    <path android:fillColor="#940030" android:pathData="M457.3,194.4L360,97.1l-14.9,17.8l-66.6,-66.6L213,41l-37,26l-76,320.5l62.4,62.4C183.8,456.5 206.5,460 230,460c127,0 230,-103 230,-230C460,217.9 459.1,206 457.3,194.4z"/>
+    <path android:fillColor="#FFAD9E" android:pathData="M229.6,28l-10,10l10,10c27.1,0 49.1,22 49.1,49.1v73.8h20V97.1C298.7,59 267.7,28 229.6,28z"/>
+    <path android:fillColor="#FFEDB5" android:pathData="M229.6,48c-27.1,0 -49.1,22 -49.1,49.1v73.8h-20V97.1C160.5,59 191.5,28 229.6,28V48z"/>
+    <path android:fillColor="#FFEDB5" android:pathData="M230,97.1l27.6,145.2l-27.6,145.2l-130,0l0,-290.3z"/>
+    <path android:fillColor="#FFAD9E" android:pathData="M230,97.1h130v290.3h-130z"/>
+    <path android:fillColor="#940030" android:pathData="M340,242.3c0,60.8 -49.2,110 -110,110l-55,-110l55,-110C290.8,132.3 340,181.6 340,242.3z"/>
+    <path android:fillColor="#FF0F27" android:pathData="M120,242.3c0,60.8 49.2,110 110,110V132.3C169.2,132.3 120,181.6 120,242.3z"/>
+    <path android:fillColor="#71E2F0" android:pathData="M230,332.3l-9.5,-94.7l99.5,4.7C320,291.9 279.6,332.3 230,332.3z"/>
+    <path android:fillColor="#C2FBFF" android:pathData="M230,152.3c49.6,0 90,40.4 90,90h-99.5L230,152.3z"/>
+    <path android:fillColor="#C2FBFF" android:pathData="M230,242.3v90c-49.6,0 -90,-40.4 -90,-90l45,-14.2L230,242.3z"/>
+    <path android:fillColor="#FFFFFF" android:pathData="M230,152.3v90h-90C140,192.7 180.4,152.3 230,152.3z"/>
+    <path android:fillColor="#FF0F27" android:pathData="M220,172.3h20v70h-20z"/>
+    <path android:fillColor="#C2001B" android:pathData="M230,232.3h70v20h-70z"/>
+    <path android:fillColor="#61A2B3" android:pathData="M230,242.3m-15,0a15,15 0,1 1,30 0a15,15 0,1 1,-30 0"/>
+</vector>
