@@ -21,7 +21,8 @@
         </activity>
         <activity android:name=".Activity.Login" />
         <activity android:name=".Activity.MainActivity" />
-        <activity android:name=".Activity.FareQuery"></activity>
+        <activity android:name=".Activity.FareQuery" />
+        <activity android:name=".Activity.TicketPurches"></activity>
     </application>
 
 </manifest>

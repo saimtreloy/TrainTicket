@@ -1,7 +1,6 @@
 package saim.com.trainticket.Activity;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -39,7 +38,7 @@ import saim.com.trainticket.Utils.ApiURL;
 import saim.com.trainticket.Utils.MySingleton;
 import saim.com.trainticket.Utils.SharedPrefDatabase;
 
-public class FareQuery extends AppCompatActivity {
+public class TicketPurches extends AppCompatActivity {
 
     ProgressDialog progressDialog;
     ArrayList<String> fromList = new ArrayList<>();
@@ -52,7 +51,7 @@ public class FareQuery extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fare_query);
+        setContentView(R.layout.activity_ticket_purches);
 
         init();
 
@@ -106,9 +105,9 @@ public class FareQuery extends AppCompatActivity {
 
     public void showDialogView(ArrayList<String> fList, final TextView textView) {
 
-        LayoutInflater factory = LayoutInflater.from(FareQuery.this);
+        LayoutInflater factory = LayoutInflater.from(TicketPurches.this);
         final View infoDialogView = factory.inflate(R.layout.dialog_from_list, null);
-        final AlertDialog infoDialog = new AlertDialog.Builder(FareQuery.this).create();
+        final AlertDialog infoDialog = new AlertDialog.Builder(TicketPurches.this).create();
         infoDialog.setView(infoDialogView);
         infoDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
@@ -146,7 +145,7 @@ public class FareQuery extends AppCompatActivity {
                     GET_TO_LIST((String)parent.getItemAtPosition(position));
                 } else if (textView.getId() == inputToList.getId()) {
                     trainList.clear();
-                    GET_FARE_LIST(inputFromList.getText().toString() ,(String)parent.getItemAtPosition(position));
+                    GET_TRAIN_LIST(inputFromList.getText().toString() ,(String)parent.getItemAtPosition(position));
                 }
 
                 infoDialog.dismiss();
@@ -289,14 +288,14 @@ public class FareQuery extends AppCompatActivity {
     }
 
 
-    public void GET_FARE_LIST(final String FROM_STATION_NAME, final String TO_STATION_NAME){
+    public void GET_TRAIN_LIST(final String FROM_STATION_NAME, final String TO_STATION_NAME){
         progressDialog.show();
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, ApiURL.getFareList,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, ApiURL.getTrainList,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        inputTrainList.setVisibility(View.GONE);
-                        btnSearch.setVisibility(View.GONE);
+                        inputTrainList.setVisibility(View.VISIBLE);
+                        btnSearch.setVisibility(View.VISIBLE);
                         progressDialog.dismiss();
                         try {
                             JSONArray jsonArray = new JSONArray(response);
@@ -304,45 +303,16 @@ public class FareQuery extends AppCompatActivity {
                             String code = jsonObject.getString("code");
                             if (code.equals("success")){
 
-                                String id = "";
-                                String train_station_start = "";
-                                String train_station_end = "";
-                                String distance = "";
-                                String second_simple = "";
-                                String second_mail = "";
-                                String commuter = "";
-                                String sulov = "";
-                                String shovon = "";
-                                String sovon_chair = "";
-                                String first_chair = "";
-                                String first_birth = "";
-                                String sigdha = "";
-                                String ac_chair = "";
-                                String ac_birth = "";
-
+                                String train_name = "";
                                 JSONArray jsonArrayUser = jsonObject.getJSONArray("result");
                                 for (int i=0; i<jsonArrayUser.length(); i++) {
 
                                     JSONObject jsonObjectUser = jsonArrayUser.getJSONObject(i);
 
-                                    id = jsonObjectUser.getString("id");
-                                    train_station_start = jsonObjectUser.getString("train_station_start");
-                                    train_station_end = jsonObjectUser.getString("train_station_end");
-                                    distance = jsonObjectUser.getString("distance");
-                                    second_simple = jsonObjectUser.getString("second_simple");
-                                    second_mail = jsonObjectUser.getString("second_mail");
-                                    commuter = jsonObjectUser.getString("commuter");
-                                    sulov = jsonObjectUser.getString("sulov");
-                                    shovon = jsonObjectUser.getString("shovon");
-                                    sovon_chair = jsonObjectUser.getString("sovon_chair");
-                                    first_chair = jsonObjectUser.getString("first_chair");
-                                    first_birth = jsonObjectUser.getString("first_birth");
-                                    sigdha = jsonObjectUser.getString("sigdha");
-                                    ac_chair = jsonObjectUser.getString("ac_chair");
-                                    ac_birth = jsonObjectUser.getString("ac_birth");
+                                    train_name = jsonObjectUser.getString("train_name");
+                                    trainList.add(train_name);
 
                                 }
-                                showFareDialogView(train_station_start, train_station_end, distance, second_simple, second_mail, commuter, sulov, shovon, sovon_chair, first_chair, first_birth, sigdha, ac_chair, ac_birth);
 
                             }else {
                                 String message = jsonObject.getString("message");
@@ -398,51 +368,4 @@ public class FareQuery extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
-    public void showFareDialogView(String dFrom, String dTo, String dDistance, String d2ndSimple, String d2ndMail, String dCommuter,
-                                   String dSulov, String dShovon, String dShovonSit, String d1sChair, String d1sBirth, String bSigdha,
-                                   String dAcChair, String dAcBirth) {
-
-        LayoutInflater factory = LayoutInflater.from(FareQuery.this);
-        final View infoDialogView = factory.inflate(R.layout.dialog_fare_list, null);
-        final AlertDialog infoDialog = new AlertDialog.Builder(FareQuery.this).create();
-        infoDialog.setView(infoDialogView);
-        infoDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-
-        TextView txtDialogFrom = infoDialogView.findViewById(R.id.txtDialogFrom);
-        TextView txtDialogTo = infoDialogView.findViewById(R.id.txtDialogTo);
-        TextView txtDialogDistance = infoDialogView.findViewById(R.id.txtDialogDistance);
-        TextView txtDialog2ndSimple = infoDialogView.findViewById(R.id.txtDialog2ndSimple);
-        TextView txtDialog2ndMail = infoDialogView.findViewById(R.id.txtDialog2ndMail);
-        TextView txtDialogCommuter = infoDialogView.findViewById(R.id.txtDialogCommuter);
-        TextView txtDialogSulov = infoDialogView.findViewById(R.id.txtDialogSulov);
-        TextView txtDialogShovon = infoDialogView.findViewById(R.id.txtDialogShovon);
-        TextView txtDialogShovonSit = infoDialogView.findViewById(R.id.txtDialogShovonSit);
-        TextView txtDialog1stChair = infoDialogView.findViewById(R.id.txtDialog1stChair);
-        TextView txtDialog1stBirth = infoDialogView.findViewById(R.id.txtDialog1stBirth);
-        TextView txtDialogSnigha = infoDialogView.findViewById(R.id.txtDialogSnigha);
-        TextView txtDialogAcChair = infoDialogView.findViewById(R.id.txtDialogAcChair);
-        TextView txtDialogAcBirth = infoDialogView.findViewById(R.id.txtDialogAcBirth);
-
-        txtDialogFrom.setText(dFrom);
-        txtDialogTo.setText(dTo);
-        txtDialogDistance.setText(dDistance + " KM");
-        txtDialog2ndSimple.setText(d2ndSimple + " tk");
-        txtDialog2ndMail.setText(d2ndMail + " tk");
-        txtDialogCommuter.setText(dCommuter + " tk");
-        txtDialogSulov.setText(dSulov + " tk");
-        txtDialogShovon.setText(dShovon + " tk");
-        txtDialogShovonSit.setText(dShovonSit + " tk");
-        txtDialog1stChair.setText(d1sChair + " tk");
-        txtDialog1stBirth.setText(d1sBirth + " tk");
-        txtDialogSnigha.setText(bSigdha + " tk");
-        txtDialogAcChair.setText(dAcChair + " tk");
-        txtDialogAcBirth.setText(dAcBirth + " tk");
-
-        infoDialog.show();
-
-    }
-
-
 }

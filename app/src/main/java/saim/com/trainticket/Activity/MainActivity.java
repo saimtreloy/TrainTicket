@@ -96,6 +96,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), FareQuery.class));
             }
         });
+        btnPurchesTicket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), TicketPurches.class));
+            }
+        });
 
         NavigationItemClicked();
     }
